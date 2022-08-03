@@ -12,7 +12,7 @@ export default async function handler(
   const data = await response.json()
   const countries = data.map((country: any) => {
     return new Country(
-      country.name.common,
+      country.name,
       country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       country.region,
       country.capital
