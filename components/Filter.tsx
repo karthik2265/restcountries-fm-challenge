@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./Filter.scss";
 import { useDispatch } from "react-redux";
-import { countriesActions } from "../../store/countries-slice";
+import { countriesActions } from "../store/countries-slice";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Filter = () => {
 
   function selectCHangeHandler() {
     if (selectRef.current !== null) {
-      const newSelectedRegion: string | null = selectRef.current.value;
+      const newSelectedRegion: string = selectRef.current.value;
       dispatch(countriesActions.updateSelectedRegion(newSelectedRegion));
     }
   }
