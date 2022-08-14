@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import React from "react";
-import Country from "../models/Country";
 import { server } from "../config/index";
 
 const DetailsPage: NextPage = () => {
@@ -10,17 +9,10 @@ const DetailsPage: NextPage = () => {
 export async function getStaticPaths() {
   const response = await fetch(`${server}/api/countries`);
   const data = await response.json();
-  console.log(data)
-  const countryNames = data.map((country: Country) => country.name);
+  console.log(data);
   return {
     fallback: false,
-    paths: countryNames.map((countryName: string) => {
-      return {
-        params: {
-          countryName,
-        },
-      };
-    }),
+    paths: {},
   };
 }
 
