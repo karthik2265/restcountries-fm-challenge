@@ -1,22 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import Country from '../../models/Country'
 
-type Data = Country[]
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
-  const response = await fetch('https://restcountries.com/v2/all')
-  const data = await response.json()
-  const countries = data.map((country: any) => {
-    return new Country(
-      country.name,
-      country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-      country.region,
-      country.capital
-    )
-  })
-  res.status(200).json(countries)
+  try {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    const data = await response.json()
+    console.log(data)
+  } catch(e) {
+
+  }
+  
+  
 }
