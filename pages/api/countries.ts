@@ -7,9 +7,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
+    console.table({name: 'karthik'})
     const response = await fetch("https://restcountries.com/v3.1/all");
     const data = await response.json()
-    console.log(data)
   } catch(e) {
 
   }
