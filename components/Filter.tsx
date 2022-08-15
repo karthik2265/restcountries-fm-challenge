@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import "./Filter.scss";
 import { useDispatch } from "react-redux";
 import { countriesActions } from "../store/countries-slice";
 
@@ -26,16 +25,14 @@ const Filter = () => {
 
   return (
     <div className="filter">
-      <form className="form__input">
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="Search for a country"
-          ref={inputRef}
-          onChange={inputCHangeHandler}
-        />
-      </form>
+      <input
+        type="search"
+        name="search"
+        id="search"
+        placeholder="Search for a country"
+        ref={inputRef}
+        onChange={inputCHangeHandler}
+      />
 
       <div className="filter__regions">
         <select
@@ -45,7 +42,7 @@ const Filter = () => {
           ref={selectRef}
           onChange={selectCHangeHandler}
         >
-          <option value="Filter by region">Filter by region</option>
+          <option value="">Filter by region</option>
           <option value="Africa">Africa</option>
           <option value="America">America</option>
           <option value="Asia">Asia</option>

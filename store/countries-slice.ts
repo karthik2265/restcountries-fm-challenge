@@ -9,9 +9,13 @@ interface IState {
   filteredCountries: Countries;
 }
 
-interface IAction {
+interface IUpdateAction {
   payload: string;
 }
+
+interface ISetAction {
+  payload: Countries
+} 
 
 const initialState: IState = {
   allCountries: [],
@@ -55,7 +59,11 @@ const countriesSlice = createSlice({
   name: "countries",
   initialState: initialState,
   reducers: {
-    updateSearchTerm(state: IState, action: IAction) {
+    setCountries(state: IState, action: ISetAction) {
+      state.allCountries = action.payload
+      state.filteredCountries = action.payload
+    },
+    updateSearchTerm(state: IState, action: IUpdateAction) {
       const newSearchTerm = action.payload;
       state.searchTerm = newSearchTerm;
       const allCountries = state.allCountries;
@@ -66,7 +74,7 @@ const countriesSlice = createSlice({
         region
       );
     },
-    updateSelectedRegion(state: IState, action: IAction) {
+    updateSelectedRegion(state: IState, action: IUpdateAction) {
       const newSelectedRegion = action.payload;
       state.selectedRegion = newSelectedRegion;
       const allCountries = state.allCountries;
