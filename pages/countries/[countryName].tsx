@@ -2,8 +2,12 @@ import { NextPage } from "next";
 import React from "react";
 import { server } from "../../config/index";
 import { Countries } from "../../types";
+import { CountryDetails } from "../../types/countryDetails";
 
-const DetailsPage: NextPage<{ countryDetails: any }> = ({ countryDetails }) => {
+const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({
+  countryDetails,
+}) => {
+  console.log(countryDetails);
   return <div>DetailsPage</div>;
 };
 
