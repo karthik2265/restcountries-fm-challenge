@@ -117,7 +117,9 @@ This is where you can give a hat tip to anyone who helped you out on this projec
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
 
 ### Questions
+
 why does setting countries[0] gives a TypeError like this on client side TypeError: Cannot assign to read only property '0' of object '[object Array]'
+
 ```js
 // put countries in redux-store
 useEffect(() => {
@@ -125,3 +127,18 @@ useEffect(() => {
   dispatch(countriesActions.setCountries(countries));
 }, [dispatch, countries]);
 ```
+
+why type checking is not happening in getStaticProps
+
+```js
+export async function getStaticProps(context: any) {
+  const countryName = context.params.countryName;
+  const response = await fetch(`${server}/api/${countryName}`);
+  const data = await response.json();
+  return {
+    props: { countryDetails: data },
+  };
+}
+```
+
+the data could be of any type and there are defined types for props in the component receiving the props
