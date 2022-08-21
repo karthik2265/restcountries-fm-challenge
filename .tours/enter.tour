@@ -1,0 +1,12 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Enter",
+  "steps": [
+    {
+      "file": "pages/_app.tsx",
+      "description": "To run the app in dev mode and start the server run the following command\r\n\r\n>> npm run dev",
+      "line": 7
+    }
+  ],
+  "ref": "main"
+}
