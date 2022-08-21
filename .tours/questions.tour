@@ -1,0 +1,25 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Questions",
+  "steps": [
+    {
+      "file": "pages/index.tsx",
+      "description": "why does setting countries[0] gives a TypeError like this on client side TypeError: Cannot assign to read only property '0' of object '[object Array]'\r\n\r\n```js\r\n// put countries in redux-store\r\nuseEffect(() => {\r\n  countries[0] = { name: \"\", population: \"\", region: \"\", capital: \"\" };\r\n  dispatch(countriesActions.setCountries(countries));\r\n}, [dispatch, countries]);\r\n```",
+      "line": 18,
+      "title": "TypeError when editing countries prop"
+    },
+    {
+      "file": "pages/countries/[countryName].tsx",
+      "description": "the prop countryDetails is from getStaticProps and typeChecking is not happening, why?\r\n\r\nis it because getStaticProps runs on server?",
+      "line": 7,
+      "title": "Type checking not happening"
+    },
+    {
+      "file": "store/index.ts",
+      "description": "what does \r\n```js\r\nReturnType<type of store.getState> \r\n``` \r\ndo?\r\n\r\nwhy can't we just use typeof store.getState?",
+      "line": 12,
+      "title": "what is ReturnType<>"
+    }
+  ],
+  "ref": "main"
+}
