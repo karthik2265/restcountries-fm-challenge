@@ -10,6 +10,8 @@ import { RootState } from "../store";
 import { Filter } from "../components";
 // config
 import { server } from "../config/index";
+// head
+import Head from "next/head";
 
 const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const dispatch = useDispatch();
@@ -25,6 +27,20 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
   return (
     <div>
+      <Head>
+        <title>Where in the world?</title>
+        <meta
+          name="theme-color"
+          content="hsl(0, 0%, 98%)"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="hsl(207, 26%, 17%)"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta name="supported-color-schemes" content="light dark" />
+      </Head>
       <Filter />
       {filteredCountries.map((country) => {
         return (

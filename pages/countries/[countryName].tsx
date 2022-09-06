@@ -1,14 +1,35 @@
 import { NextPage } from "next";
 import React from "react";
 import { server } from "../../config/index";
+// types
 import { Countries } from "../../types";
 import { CountryDetails } from "../../types/countryDetails";
+// head
+import Head from "next/head";
 
 const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({
   countryDetails,
 }) => {
   console.log(countryDetails);
-  return <div>DetailsPage</div>;
+  return (
+    <div>
+      <Head>
+        <title>Where in the world?</title>
+        <meta
+          name="theme-color"
+          content="hsl(0, 0%, 98%)"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="hsl(207, 26%, 17%)"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta name="supported-color-schemes" content="light dark" />
+      </Head>
+      DetailsPage
+    </div>
+  );
 };
 
 export async function getStaticPaths() {
