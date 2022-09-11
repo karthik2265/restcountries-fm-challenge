@@ -10,7 +10,6 @@ import Head from "next/head";
 const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({
   countryDetails,
 }) => {
-  console.log(countryDetails);
   return (
     <div>
       <Head>

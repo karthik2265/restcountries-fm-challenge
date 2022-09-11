@@ -12,6 +12,8 @@ import { Filter } from "../components";
 import { server } from "../config/index";
 // head
 import Head from "next/head";
+// link
+import Link from "next/link";
 
 const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const dispatch = useDispatch();
@@ -44,10 +46,16 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
       <Filter />
       {filteredCountries.map((country) => {
         return (
-          <div style={{ border: "1px solid red" }} key={country.name}>
-            <h1>{country.name}</h1>
-            <h2>{country.region}</h2>
-          </div>
+          <Link
+            key={country.name}
+            href={`/countries/${country.name}`}
+            passHref={true}
+          >
+            <div style={{ border: "1px solid red" }}>
+              <h1>{country.name}</h1>
+              <h2>{country.region}</h2>
+            </div>
+          </Link>
         );
       })}
     </div>
