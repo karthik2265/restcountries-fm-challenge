@@ -23,6 +23,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
     dispatch(countriesActions.setCountries(countries));
   }, [dispatch, countries]);
 
+  // get filtered countries from redux store
   const filteredCountries = useSelector(
     (state: RootState) => state.countries.filteredCountries
   );
