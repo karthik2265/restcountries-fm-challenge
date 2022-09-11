@@ -26,7 +26,7 @@ export default async function handler(
     ),
     languages: getValuesOfObjectAsArray(countryData.languages),
     borderCountries: await getCommonNamesOfBorderCountriesFromCodeNames(
-      countryData.borders
+      countryData.borders || []
     ),
   };
   return res.send(countryDetails);
