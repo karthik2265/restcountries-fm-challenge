@@ -31,9 +31,9 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   // set theme based on user preference
   useEffect(() => {
     if (window.matchMedia("prefers-color-scheme: dark")) {
-      dispatch(uiActions.setLightTheme(false))
+      dispatch(uiActions.setLightTheme(false));
     } else {
-      dispatch(uiActions.setLightTheme(true))
+      dispatch(uiActions.setLightTheme(true));
     }
   }, [dispatch]);
 
@@ -41,46 +41,24 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
 
   // get filtered countries from redux store
-  const filteredCountries = useSelector(
-    (state: RootState) => state.countries.filteredCountries
-  );
+  const filteredCountries = useSelector((state: RootState) => state.countries.filteredCountries);
 
-  return (
-    <div>
-      <Head>
-        <title>Where in the world?</title>
-        <meta
-          name="theme-color"
-          content="hsl(0, 0%, 98%)"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="hsl(207, 26%, 17%)"
-          media="(prefers-color-scheme: dark)"
-        />
-        <meta name="supported-color-schemes" content="light dark" />
-      </Head>
-      <header>
-        <h1>Where in the world?</h1>
-        <div>
-          {isLightTheme ? (
-            <Image src={MoonIcon} alt="moon-icon" />
-          ) : (
-            <Image src={SunIcon} alt="sun-icon" />
-          )}
-          <h4> {(isLightTheme ? "Dark" : "Light") + " " + "Mode"} </h4>
-        </div>
-      </header>
-      <main>
-        <Filter />
+  // components
+  const DarkOrLightModeButton = () => {
+    return (
+      <div>
+        {isLightTheme ? <Image src={MoonIcon} alt="moon icon" /> : <Image src={SunIcon} alt="sun icon" />}
+        <h4> {(isLightTheme ? "Dark" : "Light") + " " + "Mode"} </h4>
+      </div>
+    );
+  };
+
+  const CountriesList = () => {
+    return (
+      <div>
         {filteredCountries.map((country) => {
           return (
-            <Link
-              key={country.name}
-              href={`/countries/${country.name}`}
-              passHref={true}
-            >
+            <Link key={country.name} href={`/countries/${country.name}`} passHref={true}>
               <div style={{ border: "1px solid red" }}>
                 <h1>{country.name}</h1>
                 <h2>{country.region}</h2>
@@ -88,6 +66,26 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
             </Link>
           );
         })}
+      </div>
+    );
+  };
+
+  // Home Page
+  return (
+    <div>
+      <Head>
+        <title>Where in the world?</title>
+        <meta name="theme-color" content="hsl(0, 0%, 98%)" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="hsl(207, 26%, 17%)" media="(prefers-color-scheme: dark)" />
+        <meta name="supported-color-schemes" content="light dark" />
+      </Head>
+      <header>
+        <h1>Where in the world?</h1>
+        <DarkOrLightModeButton />
+      </header>
+      <main>
+        <Filter />
+        <CountriesList />
       </main>
     </div>
   );
