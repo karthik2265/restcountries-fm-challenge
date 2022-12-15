@@ -18,6 +18,7 @@ import Image from "next/image";
 // images
 import MoonIcon from "../public/images/moon-icon.svg";
 import SunIcon from "../public/images/day-sunny-icon.svg";
+import { uiActions } from "../store/ui-slice";
 
 const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,15 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   useEffect(() => {
     dispatch(countriesActions.setCountries(countries));
   }, [dispatch, countries]);
+
+  // set theme based on user preference
+  useEffect(() => {
+    if (window.matchMedia("prefers-color-scheme: dark")) {
+      dispatch(uiActions.setLightTheme(false))
+    } else {
+      dispatch(uiActions.setLightTheme(true))
+    }
+  }, [dispatch]);
 
   // get theme
   const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
