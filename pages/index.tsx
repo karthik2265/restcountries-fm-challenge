@@ -19,6 +19,8 @@ import Image from "next/image";
 import MoonIcon from "../public/images/moon-icon.svg";
 import SunIcon from "../public/images/day-sunny-icon.svg";
 import { uiActions } from "../store/ui-slice";
+// styles
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
   // set theme based on user preference
   useEffect(() => {
-    if (window.matchMedia("prefers-color-scheme: dark")) {
+    if (window.matchMedia("prefers-color-scheme: dark").matches) {
       dispatch(uiActions.setLightTheme(false));
     } else {
       dispatch(uiActions.setLightTheme(true));
@@ -43,10 +45,15 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   // get filtered countries from redux store
   const filteredCountries = useSelector((state: RootState) => state.countries.filteredCountries);
 
-  // components
+  // handler functions
+  function changeThemeHandler() {
+    dispatch(uiActions.setLightTheme(!isLightTheme));
+  }
+
+  // local components
   const DarkOrLightModeButton = () => {
     return (
-      <div>
+      <div onClick={changeThemeHandler}>
         {isLightTheme ? <Image src={MoonIcon} alt="moon icon" /> : <Image src={SunIcon} alt="sun icon" />}
         <h4> {(isLightTheme ? "Dark" : "Light") + " " + "Mode"} </h4>
       </div>
@@ -72,14 +79,15 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
   // Home Page
   return (
-    <div>
+    <div data-theme={isLightTheme ? "" : "dark"}>
       <Head>
         <title>Where in the world?</title>
+        {/* themeing */}
         <meta name="theme-color" content="hsl(0, 0%, 98%)" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="hsl(207, 26%, 17%)" media="(prefers-color-scheme: dark)" />
         <meta name="supported-color-schemes" content="light dark" />
       </Head>
-      <header>
+      <header className={styles.header}>
         <h1>Where in the world?</h1>
         <DarkOrLightModeButton />
       </header>
