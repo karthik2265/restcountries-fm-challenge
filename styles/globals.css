@@ -15,6 +15,7 @@ html {
 /* global variables */
 :root {
   --app-left-right-padding: 2rem;
+  --app-left-right-padding-600px: 1rem;
 }
 
 /* theme related color variables -> default light theme */

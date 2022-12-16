@@ -2,6 +2,43 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem var(--app-left-right-padding);
   background-color: var(--elements);
+  color: var(--text);
+}
+
+.theme-space {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.theme-icon {
+  width: 25px;
+  height: max-content;
+}
+
+.theme-icon:hover {
+  cursor: pointer;
+}
+
+.theme-icon:active {
+  scale: 0.88;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 2rem var(--app-left-right-padding-600px);
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .header h4 {
+    font-size: 0.8rem;
+  }
+
+  .theme-icon {
+    width: 20px;
+  }
 }

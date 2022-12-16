@@ -53,9 +53,13 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   // local components
   const DarkOrLightModeButton = () => {
     return (
-      <div onClick={changeThemeHandler}>
-        {isLightTheme ? <Image src={MoonIcon} alt="moon icon" /> : <Image src={SunIcon} alt="sun icon" />}
-        <h4> {(isLightTheme ? "Dark" : "Light") + " " + "Mode"} </h4>
+      <div className={styles["theme-space"]} onClick={changeThemeHandler}>
+        {isLightTheme ? (
+          <Image className={styles["theme-icon"]} src={SunIcon} alt="sun icon" />
+        ) : (
+          <Image className={styles["theme-icon"]} src={MoonIcon} alt="moon icon" />
+        )}
+        <h4> {(isLightTheme ? "Light" : "Dark") + " " + "Mode"} </h4>
       </div>
     );
   };
