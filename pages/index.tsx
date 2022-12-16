@@ -20,7 +20,7 @@ import MoonIcon from "../public/images/moon-icon.svg";
 import SunIcon from "../public/images/day-sunny-icon.svg";
 import { uiActions } from "../store/ui-slice";
 // styles
-import styles from "../styles/Home.module.css";
+import styles from "./Home.module.css";
 
 const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const dispatch = useDispatch();
