@@ -27,6 +27,11 @@
   scale: 0.88;
 }
 
+/* main -> [filter, country-cards-list] */
+.main {
+  background-color: var(--background);
+}
+
 @media screen and (max-width: 600px) {
   .header {
     padding: 2rem var(--app-left-right-padding-600px);

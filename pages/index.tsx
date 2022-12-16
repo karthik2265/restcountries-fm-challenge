@@ -95,7 +95,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
         <h1>Where in the world?</h1>
         <DarkOrLightModeButton />
       </header>
-      <main>
+      <main className={styles.main}>
         <Filter />
         <CountriesList />
       </main>
