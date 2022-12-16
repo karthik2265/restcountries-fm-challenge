@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
+// redux
 import { useDispatch } from "react-redux";
 import { countriesActions } from "../store/countries-slice";
+// styles
+import styles from "./Filter.module.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const Filter = () => {
   }
 
   return (
-    <div className="filter">
+    <div className={styles.filter}>
       <input
         type="search"
         name="search"
@@ -35,13 +38,7 @@ const Filter = () => {
       />
 
       <div className="filter__regions">
-        <select
-          name="select"
-          id="select"
-          className="select"
-          ref={selectRef}
-          onChange={selectCHangeHandler}
-        >
+        <select name="select" id="select" className="select" ref={selectRef} onChange={selectCHangeHandler}>
           <option value="">Filter by region</option>
           <option value="Africa">Africa</option>
           <option value="America">America</option>

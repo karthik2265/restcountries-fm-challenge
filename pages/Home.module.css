@@ -30,6 +30,7 @@
 /* main -> [filter, country-cards-list] */
 .main {
   background-color: var(--background);
+  padding: 2rem var(--app-left-right-padding);
 }
 
 @media screen and (max-width: 600px) {
@@ -41,6 +42,10 @@
   }
   .header h4 {
     font-size: 0.8rem;
+  }
+
+  .main {
+    background-color: 2rem var(--app-left-right-padding-600px);
   }
 
   .theme-icon {
