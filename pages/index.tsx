@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { countriesActions } from "../store/countries-slice";
 // types
 import type { GetStaticProps, NextPage } from "next";
-import { Countries } from "../types";
+import { Countries, Country } from "../types";
 import { RootState } from "../store";
 // components
-import { Filter } from "../components";
+import { CountryCard, Filter } from "../components";
 // config
 import { server } from "../config/index";
 // head
@@ -67,15 +67,8 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   const CountriesList = () => {
     return (
       <div>
-        {filteredCountries.map((country) => {
-          return (
-            <Link key={country.name} href={`/countries/${country.name}`} passHref={true}>
-              <div style={{ border: "1px solid red" }}>
-                <h1>{country.name}</h1>
-                <h2>{country.region}</h2>
-              </div>
-            </Link>
-          );
+        {filteredCountries.map((country: Country, i) => {
+          return <CountryCard key={i} country={country} />;
         })}
       </div>
     );
