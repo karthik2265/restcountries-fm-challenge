@@ -1,0 +1,67 @@
+.filter {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text);
+}
+
+.filter-search {
+  padding: 0.45rem;
+  width: 30%;
+  display: flex;
+  background-color: var(--elements);
+  align-items: center;
+  border-radius: 5px;
+}
+
+.find-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.input {
+  background-color: var(--elements);
+  padding: 0.65rem 1rem;
+  width: 100%;
+  border: none;
+  font-weight: 600;
+}
+
+.input:active {
+  border: none;
+  outline: none;
+}
+
+.filter-regions {
+  width: 12%;
+}
+
+.filter-select-region {
+  background-color: var(--elements);
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.filter-select-region:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .filter {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 3rem;
+  }
+
+  .filter-search {
+    width: 100%;
+  }
+  
+  .filter-regions {
+    width: 50%;
+  }
+}

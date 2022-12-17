@@ -29,8 +29,8 @@
 
 /* main -> [filter, country-cards-list] */
 .main {
-  background-color: var(--background);
   padding: 2rem var(--app-left-right-padding);
+  background-color: var(--background);
 }
 
 @media screen and (max-width: 600px) {
@@ -45,7 +45,7 @@
   }
 
   .main {
-    background-color: 2rem var(--app-left-right-padding-600px);
+    padding: 2rem var(--app-left-right-padding-600px);
   }
 
   .theme-icon {
