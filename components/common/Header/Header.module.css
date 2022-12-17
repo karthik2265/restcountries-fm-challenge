@@ -1,0 +1,28 @@
+/* header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem var(--app-left-right-padding);
+  background-color: var(--elements);
+  color: var(--text);
+}
+
+.theme-space {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.theme-icon {
+  width: 25px;
+  height: max-content;
+}
+
+.theme-icon:hover {
+  cursor: pointer;
+}
+
+.theme-icon:active {
+  scale: 0.88;
+}

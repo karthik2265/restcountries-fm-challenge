@@ -2,22 +2,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { countriesActions } from "../store/countries-slice";
-// types
-import type { GetStaticProps, NextPage } from "next";
-import { Countries, Country } from "../types";
+import { uiActions } from "../store/ui-slice";
 import { RootState } from "../store";
+// types
+import { Countries, Country } from "../types";
 // components
-import { CountryCard, Filter } from "../components";
+import { CountryCard, Filter, Header } from "../components";
 // config
 import { server } from "../config/index";
 // head
 import Head from "next/head";
 // next
 import Image from "next/image";
-// images
-import MoonIcon from "../public/images/moon-icon.svg";
-import SunIcon from "../public/images/day-sunny-icon.svg";
-import { uiActions } from "../store/ui-slice";
+import type { GetStaticProps, NextPage } from "next";
 // styles
 import styles from "./Home.module.css";
 
@@ -44,24 +41,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
   // get filtered countries from redux store
   const filteredCountries = useSelector((state: RootState) => state.countries.filteredCountries);
 
-  // handler functions
-  function changeThemeHandler() {
-    dispatch(uiActions.setLightTheme(!isLightTheme));
-  }
-
   // local components
-  const DarkOrLightModeButton = () => {
-    return (
-      <div className={styles["theme-space"]} onClick={changeThemeHandler}>
-        {isLightTheme ? (
-          <Image className={styles["theme-icon"]} src={SunIcon} alt="sun icon" />
-        ) : (
-          <Image className={styles["theme-icon"]} src={MoonIcon} alt="moon icon" />
-        )}
-        <h4> {(isLightTheme ? "Light" : "Dark") + " " + "Mode"} </h4>
-      </div>
-    );
-  };
 
   const CountriesList = () => {
     return (
@@ -83,10 +63,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
         <meta name="theme-color" content="hsl(207, 26%, 17%)" media="(prefers-color-scheme: dark)" />
         <meta name="supported-color-schemes" content="light dark" />
       </Head>
-      <header className={styles.header}>
-        <h1>Where in the world?</h1>
-        <DarkOrLightModeButton />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Filter />
         <CountriesList />
