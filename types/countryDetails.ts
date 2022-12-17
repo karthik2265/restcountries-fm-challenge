@@ -1,4 +1,5 @@
 export interface CountryDetails {
+  name: string,
   flag: string;
   nativeName: string[];
   population: string;

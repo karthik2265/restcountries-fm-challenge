@@ -1,33 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { CountryDetails } from "../../types/countryDetails";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { countryName } = req.query;
-  const response = await fetch(
-    `http://restcountries.com/v3.1/name/${countryName}`
-  );
+  const response = await fetch(`http://restcountries.com/v3.1/name/${countryName}`);
   const data = await response.json();
   const countryData = data[0];
   const countryDetails: CountryDetails = {
+    name: "" + countryName,
     flag: countryData.flags.svg,
-    nativeName: getValuesOfObjectAsArray(countryData.name.nativeName).map(
-      (d) => d.common
-    ),
+    nativeName: getValuesOfObjectAsArray(countryData.name.nativeName).map((d) => d.common),
     population: countryData.population.toString(),
     region: countryData.region,
     subRegion: countryData.subregion,
     capital: countryData.capital,
     topLevelDomain: countryData.tld,
-    currencies: getValuesOfObjectAsArray(countryData.currencies).map(
-      (d) => d.name
-    ),
+    currencies: getValuesOfObjectAsArray(countryData.currencies).map((d) => d.name),
     languages: getValuesOfObjectAsArray(countryData.languages),
-    borderCountries: await getCommonNamesOfBorderCountriesFromCodeNames(
-      countryData.borders || []
-    ),
+    borderCountries: await getCommonNamesOfBorderCountriesFromCodeNames(countryData.borders || []),
   };
   return res.send(countryDetails);
 }
