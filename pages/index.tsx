@@ -76,7 +76,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
   // Home Page
   return (
-    <div data-theme={isLightTheme ? "" : "dark"}>
+    <div data-theme={isLightTheme ? "light" : "dark"}>
       <Head>
         <title>Where in the world?</title>
         {/* themeing */}

@@ -8,11 +8,13 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
-input, select {
+input,
+select {
   color: inherit;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: inherit;
   opacity: 1; /* Firefox */
 }
@@ -27,28 +29,17 @@ html {
   --app-left-right-padding-600px: 1rem;
 }
 
-/* theme related color variables -> default light theme */
-:root {
-  --background: hsl(0, 0%, 98%);
-  --text: hsl(200, 15%, 8%);
-  --elements: hsl(0, 0%, 100%);
-  --input: hsl(0, 0%, 52%);
-}
-
-/* listen for user preference of theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: hsl(207, 26%, 17%);
-    --text: hsl(0, 0%, 100%);
-    --elements: hsl(209, 23%, 22%);
-    --input: hsl(0, 0%, 52%);
-  }
-}
-
-/* change to dark theme */
+/* theme */
 [data-theme="dark"] {
   --background: hsl(207, 26%, 17%);
   --text: hsl(0, 0%, 100%);
   --elements: hsl(209, 23%, 22%);
+  --input: hsl(0, 0%, 52%);
+}
+
+[data-theme="light"] {
+  --background: hsl(0, 0%, 98%);
+  --text: hsl(200, 15%, 8%);
+  --elements: hsl(0, 0%, 100%);
   --input: hsl(0, 0%, 52%);
 }
