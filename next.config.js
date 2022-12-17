@@ -3,8 +3,11 @@
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return []
+    return [];
   },
-}
+  images: {
+    domains: ["flagcdn.com", "upload.wikimedia.org"],
+  },
+};
 
 module.exports = nextConfig
