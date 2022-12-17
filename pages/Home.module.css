@@ -33,6 +33,15 @@
   background-color: var(--background);
 }
 
+/* countries list */
+.countries-list {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
 @media screen and (max-width: 600px) {
   .header {
     padding: 2rem var(--app-left-right-padding-600px);
@@ -50,5 +59,9 @@
 
   .theme-icon {
     width: 20px;
+  }
+
+  .countries-list {
+    flex-direction: column;
   }
 }

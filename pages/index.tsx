@@ -66,7 +66,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
   const CountriesList = () => {
     return (
-      <div>
+      <div className={styles["countries-list"]}>
         {filteredCountries.map((country: Country, i) => {
           return <CountryCard key={i} country={country} />;
         })}
