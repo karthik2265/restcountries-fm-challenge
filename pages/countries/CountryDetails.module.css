@@ -1,0 +1,11 @@
+.main {
+  min-height: 95vh;
+  background-color: var(--background);
+  padding: 2rem var(--app-left-right-padding);
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    padding: 2rem var(--app-left-right-padding-600px);
+  }
+}

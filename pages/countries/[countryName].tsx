@@ -6,6 +6,7 @@ import { CountryDetails } from "../../types";
 import { RootState } from "../../store";
 // next
 import Head from "next/head";
+import Image from "next/image";
 import { NextPage } from "next";
 // components
 import { Header } from "../../components";
@@ -14,7 +15,7 @@ import { useSelector } from "react-redux";
 // styles
 import styles from "./CountryDetails.module.css";
 
-const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({ countryDetails }) => {
+const DetailsPage: NextPage<{ country: CountryDetails }> = ({ country }) => {
   // get theme
   const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
   return (
@@ -27,12 +28,16 @@ const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({ countryDeta
       </Head>
       <Header />
       <main className={styles.main}>
-        <div className={styles["img-container"]}></div>
+        <div className={styles["img-container"]}>
+          <Image src={country.flag} fill={true} objectFit="cover" alt="flag image" />
+        </div>
         <div className={styles["info-container"]}></div>
       </main>
     </div>
   );
 };
+
+// server side
 
 export async function getStaticPaths() {
   const response = await fetch(`${server}/api/countries`);
@@ -53,7 +58,7 @@ export async function getStaticProps(context: any) {
   const response = await fetch(`${server}/api/${countryName}`);
   const data = await response.json();
   return {
-    props: { countryDetails: data },
+    props: { country: data },
   };
 }
 

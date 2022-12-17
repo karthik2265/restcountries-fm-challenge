@@ -2,24 +2,19 @@ import React from "react";
 // next
 import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
+import { NextPage } from "next";
 // types
 import { Country } from "../../types";
 // styles
 import styles from "./CountryCard.module.css";
-
-// propsType
-type propsType = {
-  country: Country;
-};
 
 // event handlers
 function redirect(path: string, router: NextRouter) {
   router.push(path);
 }
 
-const CountryCard = (props: propsType) => {
+const CountryCard: NextPage<{ country: Country }> = ({ country }) => {
   const router = useRouter();
-  const country = props.country;
   return (
     <div
       onClick={() => {
