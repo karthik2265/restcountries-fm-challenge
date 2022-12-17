@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IState {
   isLoading: boolean;
-  isLightTheme: boolean;
+  isLightTheme: boolean | null;
 }
 
 interface IUpdateAction {
@@ -11,7 +11,7 @@ interface IUpdateAction {
 
 const initialState: IState = {
   isLoading: false,
-  isLightTheme: true,
+  isLightTheme: null,
 };
 
 const uiSlice = createSlice({

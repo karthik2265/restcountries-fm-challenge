@@ -26,17 +26,19 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
     dispatch(countriesActions.setCountries(countries));
   }, [dispatch, countries]);
 
-  // set theme based on user preference
-  useEffect(() => {
-    if (window.matchMedia("prefers-color-scheme: dark").matches) {
-      dispatch(uiActions.setLightTheme(false));
-    } else {
-      dispatch(uiActions.setLightTheme(true));
-    }
-  }, [dispatch]);
-
   // get theme
   const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
+
+  // set theme based on user preference
+  useEffect(() => {
+    if (isLightTheme == null) {
+      if (window.matchMedia("prefers-color-scheme: dark").matches) {
+        dispatch(uiActions.setLightTheme(false));
+      } else {
+        dispatch(uiActions.setLightTheme(true));
+      }
+    }
+  }, [dispatch, isLightTheme]);
 
   // get filtered countries from redux store
   const filteredCountries = useSelector((state: RootState) => state.countries.filteredCountries);

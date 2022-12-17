@@ -18,7 +18,6 @@ import styles from "./CountryDetails.module.css";
 import BackIcon from "../../public/images/back-icon.svg";
 
 const DetailsPage: NextPage<{ country: CountryDetails }> = ({ country }) => {
-  console.log(country);
   // get theme
   const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
   // router
