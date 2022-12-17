@@ -4,6 +4,15 @@
   padding: 2rem var(--app-left-right-padding);
 }
 
+/* image section */
+.img-container {
+  position: relative;
+  width: 40%;
+  height: 60vh;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 600px) {
   .main {
     padding: 2rem var(--app-left-right-padding-600px);
