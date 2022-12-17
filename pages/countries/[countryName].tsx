@@ -1,32 +1,35 @@
-import { NextPage } from "next";
 import React from "react";
 import { server } from "../../config/index";
 // types
 import { Countries } from "../../types";
-import { CountryDetails } from "../../types/countryDetails";
-// head
+import { CountryDetails } from "../../types";
+import { RootState } from "../../store";
+// next
 import Head from "next/head";
+import { NextPage } from "next";
+// components
+import { Header } from "../../components";
+// redux
+import { useSelector } from "react-redux";
+// styles
+import styles from "./CountryDetails.module.css";
 
-const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({
-  countryDetails,
-}) => {
+const DetailsPage: NextPage<{ countryDetails: CountryDetails }> = ({ countryDetails }) => {
+  // get theme
+  const isLightTheme = useSelector((state: RootState) => state.ui.isLightTheme);
   return (
-    <div>
+    <div data-theme={isLightTheme ? "light" : "dark"}>
       <Head>
         <title>Where in the world?</title>
-        <meta
-          name="theme-color"
-          content="hsl(0, 0%, 98%)"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="hsl(207, 26%, 17%)"
-          media="(prefers-color-scheme: dark)"
-        />
+        <meta name="theme-color" content="hsl(0, 0%, 98%)" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="hsl(207, 26%, 17%)" media="(prefers-color-scheme: dark)" />
         <meta name="supported-color-schemes" content="light dark" />
       </Head>
-      DetailsPage
+      <Header />
+      <main className={styles.main}>
+        <div className={styles["img-container"]}></div>
+        <div className={styles["info-container"]}></div>
+      </main>
     </div>
   );
 };
