@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 // redux
 import { useDispatch } from "react-redux";
-import { countriesActions } from "../store/countries-slice";
+import { countriesActions } from "../../store/countries-slice";
 // styles
 import styles from "./Filter.module.css";
 // images
-import FindIcon from "../public/images/find-icon.svg";
+import FindIcon from "../../public/images/find-icon.svg";
 import Image from "next/image";
 
 const Filter = () => {
