@@ -13,7 +13,6 @@ import { server } from "../config/index";
 // head
 import Head from "next/head";
 // next
-import Link from "next/link";
 import Image from "next/image";
 // images
 import MoonIcon from "../public/images/moon-icon.svg";
