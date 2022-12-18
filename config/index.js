@@ -1,1 +1,1 @@
-export const server = 'http://localhost:3000'
+export const server = "https://restcountries-fm-challenge-gp83.com";
