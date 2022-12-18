@@ -1,1 +1,1 @@
-export const server = "https://countries.vercel.app";
+export const server = "http://localhost:3000";
