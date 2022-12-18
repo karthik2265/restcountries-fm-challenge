@@ -24,7 +24,7 @@ const DetailsPage: NextPage<{ country: CountryDetails }> = ({ country }) => {
   const router = useRouter();
 
   // event handlers
-  function routeChangeHandler(path: "string") {
+  function routeChangeHandler(path: string) {
     router.push(path);
   }
 
