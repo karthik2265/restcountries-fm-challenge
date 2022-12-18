@@ -1,1 +1,1 @@
-export const server = "https://restcountries-fm-challenge-gp83.com";
+export const server = "https://countries.vercel.app";
