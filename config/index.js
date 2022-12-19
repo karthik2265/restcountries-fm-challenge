@@ -1,1 +1,1 @@
-export const server = "https://countries-tau-indol.vercel.app/";
+export const server = process.env.VERCEL_URL;
