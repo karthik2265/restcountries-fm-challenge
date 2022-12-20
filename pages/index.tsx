@@ -14,7 +14,7 @@ import { server } from "../config/index";
 import Head from "next/head";
 // next
 import Image from "next/image";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 // styles
 import styles from "./Home.module.css";
 
@@ -76,7 +76,7 @@ const Home: NextPage<{ countries: Countries }> = ({ countries }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(`${server}/api/countries`);
   const data: Countries = await response.json();
   return {

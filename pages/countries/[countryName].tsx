@@ -7,7 +7,7 @@ import { RootState } from "../../store";
 // next
 import Head from "next/head";
 import Image from "next/image";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 // components
 import { Header } from "../../components";
@@ -113,21 +113,7 @@ const DetailsPage: NextPage<{ country: CountryDetails }> = ({ country }) => {
 
 // server side
 
-export async function getStaticPaths() {
-  const response = await fetch(`${server}/api/countries`);
-  const countries: Countries = await response.json();
-  const paths = countries.map((country) => {
-    return {
-      params: { countryName: country.name },
-    };
-  });
-  return {
-    fallback: true,
-    paths,
-  };
-}
-
-export async function getStaticProps(context: any) {
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const countryName = context.params.countryName;
   const response = await fetch(`${server}/api/${countryName}`);
   const country = await response.json();
