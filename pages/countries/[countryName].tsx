@@ -32,9 +32,6 @@ const DetailsPage: NextPage<{ country: CountryDetails }> = ({ country }) => {
     <div data-theme={isLightTheme ? "light" : "dark"}>
       <Head>
         <title>Where in the world?</title>
-        <meta name="theme-color" content="hsl(0, 0%, 98%)" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="hsl(207, 26%, 17%)" media="(prefers-color-scheme: dark)" />
-        <meta name="supported-color-schemes" content="light dark" />
       </Head>
       <Header />
       <main className={styles.main}>
